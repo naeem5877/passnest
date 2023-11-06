@@ -12,18 +12,6 @@ firebase_admin.initialize_app(cred, {
         'databaseURL': 'https://lyrical-respect-389317-default-rtdb.firebaseio.com/'
     })
 
-def check_password_strength(password):
-  # Use a password strength library to check password strength
-  schema = password_strength.PasswordPolicy.from_names(
-      length=8,  # Minimum length
-      uppercase=1,  # At least one uppercase character
-      numbers=1,  # At least one numeric character
-  )
-
-  password = password_strength.PasswordStats(password)
-  return password.test(schema)
-  
-
 @app.route('/')
 def home():
         return render_template('home.html')
@@ -80,34 +68,22 @@ def index():
             flash("Please login to access this page")
             return redirect(url_for('login'))
 
-  @app.route('/add_password', methods=['POST'])
-  def add_password():
-      if 'uid' in session:
-          site = request.form['site']
-          username = request.form['username']
-          password = request.form['password']
+@app.route('/add_password', methods=['POST'])
+def add_password():
+        if 'uid' in session:
+            site = request.form['site']
+            username = request.form['username']
+            password = request.form['password']
 
-          # Check password strength
-          password_strength_result = check_password_strength(password)
-
-          if password_strength_result['strength'] == 'Weak':
-              # Password is weak, provide suggestions
-              suggestions = password_strength_result['suggestions']
-
-              # Add a popup window to show suggestions
-              return render_template('password_suggestions.html', suggestions=suggestions)
-          else:
-              # Password is strong, save it
-              passwords_ref = db.reference('passwords').child(session['uid'])
-              passwords_ref.child(site).set({
-                  'username': username,
-                  'password': password
-              })
-              flash("Password added successfully!")
-      else:
-          flash("Please login to access this feature")
-      return redirect(url_for('index'))
-
+            passwords_ref = db.reference('passwords').child(session['uid'])
+            passwords_ref.child(site).set({
+                'username': username,
+                'password': password
+            })
+            flash("Password added successfully!")
+        else:
+            flash("Please login to access this feature")
+        return redirect(url_for('index'))
 
 @app.route('/search_password', methods=['POST'])
 def search_password():
