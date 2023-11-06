@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "lyrical-respect-389317",
+  "private_key_id": "44168dfe6f4a34f23453b9dbd66942e0b589c148",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCqunEU0f1DGJ10\nYLHfT6kEmPzO7UI2UT/J4xcxtrYWMgLCCWt/Wah4It5Nn9GneUybmxC7TB2vWYcy\nkReUX4dZLsPWAqoRapdglS5F923yIiuIv3xsHnoEWG1Fn6MlUG1shU3NKJ6M58CO\nqmukmo45scRDY6OUnjusYTuTeiwBXucs5J8ZCwPmZ049HhS5MYYbcKYGuwRfQjgr\nJI8WYlUtxoAxtJNtBgf9DJzYAbIlDDwzg5ZrWz0opEcE+Y4Hj4GveJ4IpBB8r6Jo\nzNQkm5E2oUT4qVetuCRK5SitzALObKaFIo4dHyxjuXicETcH61iPCAhZPure/yvK\nm2YYIZu7AgMBAAECggEAUfPrQkZGn0Wal3mvCHXxuR5DBIWJag94Yk3bHWcKYv8g\nqcnhyyDbqMd8FKDp/81PQ8acsnuoKDr+lfxl6Dgu/VVgdkOTJYcYISmbK8TJBxj1\n8s+QR0od4iYcVfZ6VvgTfqtCnH+qFBNPMGyH/VyfdvxpLLwQks+d73JBKdrUctc0\n0i3Nfdxogp4+q+WdyGmYh3rf8oi7110KZm1kvFRvzJc4jlWNWJN3Y3VF5QHO4eJl\nP9rjB4d1hs8+193/dbhgJw46IA3Hu0ns2BPhPNjEPHusJbWoTknbpiTQllOJt6d0\nXlJTnSuZ8MVdBLkawdjGUsKQp1ciT0wQMO5Pg9xGcQKBgQDmbIb2BBZQaVd3K3Mt\n/xEbK1AKhCth3rntEEr8QAs956y4Gc4nxMvok64BdEUsJdN0LVv8721LgQLY/i3R\nqtC5sui5B67KH2BIJuRWq/i7ZV6K1mHIhg5QFGnEHAoBcayHWsMbFfJn84aNiiJ/\naaUfwl6dOelDvRxl00bUXasRgwKBgQC9ras0xB41N7DnoLlMm/lNBg4Ky9FwtzGG\nOowkqjVuzzwnTn6DscpL4lIz1Bo8lQ6Fljq3NRBAZE1Y1/DjqTL4dWbpiLnnpH38\n6UrORX3K1GT07L53IAdtiGpc85IKxqKdXWf0IGp3LVaN7TkO6RIRF4UvxIdzFLdY\n496L3jBPaQKBgFTlU2w84UPLLBCaD5u4yEKsWJcnTxyGBRaU1CvQJNQwEXDbARuh\n5EbScl/SyNGVNi0tsSClziztYXE1ZQhE2RYyFpBlhj6uBLlQqvxL7B6PIKAikHBj\nA875VmaMthsGGLzd8dh+44rtLHvlkwRCljX3VQi0l37/pADYMNZ5lFelAoGBAK+C\n3aLrvg/8QkNyY0PSJ7Lv4Vp4Eoq72KWd00OyA9NPCxhL96EgiFIDT5EJuGVKf694\nvUf9X9ZVeYS1+/6M988Tw3BgxbTkbnfx3vhTMPzX37sKvYs5JeZijhkIgKBcAOig\nH6qzvBAe8bJOSbfUTpVmMCVtMvB3wNgNskW2CPnRAoGATg/V5UKHn3vsO1boU6eL\n/UjtidyQ6vOFWrTvmVOrAt3/p5gdhCCUboKpUb2IZBkcmfteD70z7msndbq4wbqP\nz1Zj7FuCU8YWLdYz7qD0yAn4CruKcWo45140j2t9GtOEedxCuZFRpAbvbi+eUS+C\nzMfLWtIH/TMwpTCq0v7m/mA=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-pujut@lyrical-respect-389317.iam.gserviceaccount.com",
+  "client_id": "106572314196912817303",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-pujut%40lyrical-respect-389317.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

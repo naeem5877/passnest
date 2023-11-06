@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Profile</title>
+    <link rel="icon" type="image/x-icon" href="static/image/last.png">
+</head>
+<body>
+    <h1>User Profile</h1>
+
+    <p>Welcome, {{ user_data.name }}!</p>
+
+    <form method="POST" action="/profile">
+        <label for="new_name">Name:</label>
+        <input type="text" id="new_name" name="new_name" value="{{ user_data.name }}" required>
+        <br>
+
+        <!-- Add more form fields for other profile information (e.g., profile picture) here -->
+
+        <input type="submit" value="Update Profile">
+    </form>
+
+    <a href="/index">Back to Dashboard</a>
+    <a href="/logout">Logout</a>
+</body>
+</html>

@@ -1,0 +1,150 @@
+/* Reset some default styles */
+body, h1, h2 {
+    margin: 0;
+    padding: 0;
+}
+
+/* Body and typography styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    text-align: center;
+}
+
+h1, h2 {
+    color: #007bff;
+    font-weight: bold;
+}
+
+/* Navbar styles */
+.navbar {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+/* Form styles */
+form {
+    margin: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+form label {
+    font-weight: 600;
+}
+
+form input[type="text"],
+form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-bottom: 2px solid #007bff;
+    border-radius: 0;
+    background-color: transparent;
+}
+
+form input[type="text"]:focus,
+form input[type="password"]:focus {
+    border-color: #0056b3;
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Table styles */
+.table {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.table th, .table td {
+    text-align: center;
+    padding: 10px;
+}
+
+/* Font Awesome icon styles */
+.fa-copy, .fa-eye, .fa-eye-slash {
+    cursor: pointer;
+    color: #007bff;
+    font-size: 18px;
+    margin-left: 5px;
+}
+
+/* Delete button styles */
+.delete-form {
+    display: inline;
+    margin: 0;
+}
+
+.delete-btn {
+    padding: 5px 10px;
+    background-color: #d9534f;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+delete-btn:hover {
+    background-color: #c9302c;
+}
+
+/* Custom alert styles */
+#customAlert {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    form {
+        padding: 10px;
+    }
+
+    form input[type="text"],
+    form input[type="password"] {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    form button {
+        width: 100%;
+    }
+}

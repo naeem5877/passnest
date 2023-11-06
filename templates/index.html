@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Password Manager</title>
+    <link rel="icon" type="image/x-icon" href="static/image/last.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/">Home</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                  <a class="nav-link" href="/logout">Logout</a>
+              </li>
+          </ul>
+      </div>
+  </nav>
+
+  
+<div class="container">
+    <h1 class="mt-4">Password Manager</h1>
+
+    <h2 class="mt-4">Add Password</h2>
+    <form action="/add_password" method="post">
+        <div class="form-group">
+            <label for="site">Site:</label>
+            <input type="text" name="site" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" name="username" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" name="password" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+
+    <h2 class="mt-4">Search Password</h2>
+    <form action="/search_password" method="post">
+        <div class="form-group">
+            <label for="search">Search by Site:</label>
+            <input type="text" name="search" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <h2 class="mt-4">Passwords</h2>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Site</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for site, entry in passwords.items() %}
+                <tr>
+                    <td>{{ site }} <i class="fa fa-copy copy-button" onclick="copyToClipboard('{{ site }}')"></i></td>
+                    <td>{{ entry.username }} <i class="fa fa-copy copy-button" onclick="copyToClipboard('{{ entry.username }}')"></i></td>
+                    <td>
+                        <span id="masked-password-{{ site }}">********</span>
+                        <span id="password-{{ site }}" style="display: none;">{{ entry.password }}</span>
+                        <i id="icon-{{ site }}" class="fa fa-eye eye-icon" onclick="togglePassword('{{ site }}')"></i>
+                        <i class="fa fa-copy copy-button" onclick="copyToClipboard('{{ entry.password }}')"></i>
+                        <div class="strength-container">
+                            <div id="strength-bar-{{ site }}" class="strength-bar"></div>
+                        </div>
+                    </td>
+                    <td>
+                        <form class="delete-form" action="#" method="post">
+                            <button type="button" class="btn btn-danger delete-btn" onclick="showDeleteModal(this)" data-site="{{ site }}">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div id="customAlert" style="display: none;">Copied to Clipboard!</div>
+
+    <!-- Modal -->
+    <div id="confirmDeleteModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Are you sure you want to delete this site?</p>
+            <button id="confirmDelete" class="btn btn-danger">Delete</button>
+            <button id="cancelDelete" class="btn btn-secondary">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+<script>
+  function evaluatePasswordStrength(password) {
+      if (password.length >= 8 && /[A-Z]/.test(password) && /[a-z]/.test(password) && /[0-9]/.test(password) && /[@$!%*?&#]/.test(password)) {
+          return 'strong';
+      } else if (password.length >= 6 && /[A-Z]/.test(password) && /[a-z]/.test(password) && /[0-9]/.test(password)) {
+          return 'medium';
+      } else if (password.length > 0) {
+          return 'weak';
+      } else {
+          return 'none';
+      }
+  }
+
+  function updateStrengthBar(site, password) {
+      const strength = evaluatePasswordStrength(password);
+      const strengthBar = document.getElementById(`strength-bar-${site}`);
+
+      switch (strength) {
+          case 'strong':
+              strengthBar.style.width = '100%';
+              strengthBar.style.backgroundColor = 'green';
+              break;
+          case 'medium':
+              strengthBar.style.width = '60%';
+              strengthBar.style.backgroundColor = 'orange';
+              break;
+          case 'weak':
+              strengthBar.style.width = '30%';
+              strengthBar.style.backgroundColor = 'red';
+              break;
+          default:
+              strengthBar.style.width = '0';
+              strengthBar.style.backgroundColor = 'none';
+              break;
+      }
+  }
+  function togglePassword(site) {
+      const maskedPasswordElement = document.getElementById(`masked-password-${site}`);
+      const actualPasswordElement = document.getElementById(`password-${site}`);
+      const icon = document.getElementById(`icon-${site}`);
+      const password = actualPasswordElement.textContent;
+
+      // If the actual password is currently displayed, hide it and show the masked one.
+      if (actualPasswordElement.style.display === "inline") {
+          actualPasswordElement.style.display = "none";
+          maskedPasswordElement.style.display = "inline";
+          icon.classList.remove('fa-eye-slash');
+          icon.classList.add('fa-eye');
+      } else {
+          maskedPasswordElement.style.display = "none";
+          actualPasswordElement.style.display = "inline";
+          icon.classList.remove('fa-eye');
+          icon.classList.add('fa-eye-slash');
+          updateStrengthBar(site, password); // Add this line
+      }
+  }
+  function copyToClipboard(text) {
+      var textarea = document.createElement("textarea");
+      textarea.textContent = text;
+      textarea.style.position = "fixed";
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+          document.execCommand("copy");
+          displayCustomAlert();
+      } catch (ex) {
+          console.warn("Copy to clipboard failed.", ex);
+      } finally {
+          document.body.removeChild(textarea);
+      }
+  }
+  function displayCustomAlert() {
+      var alertBox = document.getElementById('customAlert');
+      alertBox.style.display = 'block'; // show the alert
+
+      setTimeout(function() {
+          alertBox.style.display = 'none'; // hide the alert after 2.5 seconds
+      }, 2500);
+  }
+  function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(function() {
+          displayCustomAlert();
+      }).catch(function(err) {
+          console.error('Could not copy text: ', err);
+      });
+  }
+
+  
+    var modal = document.getElementById("confirmDeleteModal");
+    var btnConfirm = document.getElementById("confirmDelete");
+    var btnCancel = document.getElementById("cancelDelete");
+    var span = document.getElementsByClassName("close")[0];
+    var formToDelete;
+
+   function showDeleteModal(btn) {
+    modal.style.display = "block";
+    formToDelete = btn.parentElement;
+    formToDelete.action = "/delete_password/" + btn.getAttribute("data-site"); // assuming you have a data-site attribute on the delete button
+}
+
+
+    btnConfirm.onclick = function() {
+        formToDelete.submit();
+    }
+
+    btnCancel.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+</body>
+</html>

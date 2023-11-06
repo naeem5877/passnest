@@ -1,0 +1,436 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #F7F9FC;
+    color: #343A40;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Navbar Styles */
+/* Style for the navbar */
+nav {
+    background: linear-gradient(to right, #7b00ff, #ff8c00);
+    color: #ffffff;
+    padding: 10px 0;
+    overflow: hidden;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+nav a.logo {
+    color: #ffffff;
+    font-size: 24px;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+nav ul {
+    padding: 0;
+    list-style: none;
+    float: right;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: color 0.3s;
+}
+
+nav ul li a.cta {
+    background: #6B57FF;
+    border-radius: 5px;
+}
+
+nav ul li a.cta:hover {
+    background: #ff8c00; /* Change color on hover */
+}
+
+/* Center logo and links for small screens */
+@media (max-width: 768px) {
+    nav {
+        text-align: center;
+    }
+    nav a.logo {
+        display: block;
+        margin: 0 auto;
+    }
+    nav ul {
+        float: none;
+    }
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+}
+
+/* Hero Section */
+header {
+    background: linear-gradient(45deg, #001eff, #30CFC0, #af83d2);
+    background-size: 400% 400%;
+    animation: gradientMovement 25s ease infinite;
+    color: #FFFFFF;
+    padding: 80px 0;
+    text-align: center;
+}
+
+@keyframes gradientMovement {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+
+}
+
+header h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 32px; /* Reduce font size for smaller screens */
+    margin-bottom: 20px;
+}
+
+header p {
+    margin-bottom: 20px; /* Reduce margin for smaller screens */
+}
+
+header a.cta {
+    background-color: #343A40;
+    padding: 12px 24px;
+    font-size: 16px; /* Reduce font size for smaller screens */
+    border-radius: 5px;
+    transition: background-color 0.2s;
+    display: block; /* Make buttons full width on small screens */
+    margin: 10px 0; /* Add space between buttons on small screens */
+}
+
+header a.cta:hover {
+    background-color: #1c1f23; /* A bit darker shade on hover */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 767px) {
+    header {
+        padding: 60px 0; /* Reduce padding on smaller screens */
+    }
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    header a.cta {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+}
+
+
+
+/* Features Section */
+#features {
+    padding: 60px 0;
+    background-color: #FFFFFF;
+}
+
+.icon-container {
+    margin-bottom: 20px;
+}
+
+.feature-item {
+    padding: 20px;
+    border-radius: 10px;
+    transition: box-shadow 0.3s;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, rgba(142, 68, 173, 0.5), rgba(52, 152, 219, 0.5), rgba(155, 89, 182, 0.5));
+    background-size: 400% 400%;
+    animation: gradientMovement 15s ease infinite;
+    color: white;
+}
+
+@keyframes gradientMovement {
+      0% {
+          background-position: 0% 50%;
+      }
+      50% {
+          background-position: 100% 50%;
+      }
+      100% {
+          background-position: 0% 50%;
+      }
+  }
+
+.feature-item:hover {
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Media Query for Smaller Screens (e.g., mobile phones) */
+@media (max-width: 768px) {
+    .feature-item {
+        text-align: center; /* Center-align the content */
+    }
+
+    .feature-item h3 {
+        margin-top: 20px; /* Add some space between icon and heading */
+    }
+
+    .icon-container {
+        text-align: center;
+    }
+}
+
+
+
+/* Media Query for Smaller Screens (e.g., mobile phones) */
+@media (max-width: 768px) {
+    .feature-item {
+        text-align: center; /* Center-align the content */
+    }
+
+    .feature-item h3 {
+        margin-top: 20px; /* Add some space between icon and heading */
+    }
+
+    .icon-container {
+        text-align: center;
+    }
+}
+
+
+
+/* Style for the footer */
+footer {
+    background: linear-gradient(to right, #7b00ff, #ff8c00);
+    color: #ffffff;
+    text-align: center;
+    padding: 20px 0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-top: 20px; /* Add margin at the top */
+}
+
+footer a {
+    text-decoration: none;
+    color: #ffffff;
+    margin: 0 10px; /* Add margin between links */
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #6B57FF;
+}
+
+/* Center text for small screens */
+@media (max-width: 768px) {
+    footer {
+        text-align: center;
+    }
+}
+
+/* Remove margin for extra small screens */
+@media (max-width: 576px) {
+    footer {
+        margin-top: 0;
+    }
+}
+
+/* Expanded Features Section */
+.features-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(1, 1fr); /* Change to a single column for smaller screens */
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .features-grid {
+    grid-template-columns: repeat(1, 1fr); /* Single column layout on smaller screens */
+  }
+
+  .feature-item {
+    padding: 20px;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    margin-bottom: 20px; /* Add some space between feature items */
+  }
+
+  .intro {
+    grid-column: auto; /* Reset grid-column to its default value */
+  }
+}
+
+.centered-content {
+  text-align: center;
+}
+
+.centered-content i {
+  display: block;
+  margin: 0 auto;
+  font-size: 2rem; /* Adjust the size if needed */
+  color: #007BFF;
+}
+
+.centered-content h4,
+.centered-content p {
+  margin: 10px 0;
+}
+
+
+/* Additional Content Section */
+#additional-content {
+    background: white;
+    padding: 60px 0;
+}
+
+.lft, .rgt {
+    text-align: center;
+}
+
+.lft h2, .rgt h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.icon {
+    width: 50px;
+}
+
+.lft img, .rgt img {
+    max-width: 100%;
+    border-radius: 10px;
+    height: auto;
+}
+
+.lft .position-relative, .rgt .position-relative {
+    position: relative;
+}
+
+.lft .position-absolute, .rgt .position-absolute {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+}
+
+.rgt p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.link-hover-underline {
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+}
+
+.link-hover-underline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: width 0.3s;
+}
+
+.link-hover-underline:hover::after {
+    width: 100%;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .lft h2, .rgt h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .lft img, .rgt img {
+        border-radius: 0;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .lft .position-absolute, .rgt .position-absolute {
+        display: none;
+    }
+
+    .rgt p {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+}
+
+
+/* Add margin to the right and left sides of the border-radius box */
+#last-content {
+    position: relative;
+    background: linear-gradient(to right, #ff8c00, #000000, #000000, #7b00ff);
+    color: #ffffff;
+    padding: 40px 0; /* Padding for top and bottom */
+    border-radius: 10px;
+    margin-bottom: 20px; /* Margin at the bottom */
+    margin-right: 50px; /* Margin to the right side */
+    margin-left: 50px; /* Margin to the left side */
+}
+
+#last-content span {
+    height: 60px;
+    transform: translateY(100%);
+    background: linear-gradient(to right, #ff8c00, #000000, #000000, #7b00ff);
+    border-radius: 0 0 10% 0;
+}
+
+#last-content .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+#last-content img {
+    width: 300px; /* Set a specific width */
+    height: auto; /* Let the image height adjust according to the aspect ratio */
+    margin-bottom: 10px;
+}
+
+#last-content h2 {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#last-content p {
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #999999;
+}
+
+#last-content a {
+    font-size: 16px;
+    text-decoration: none;
+    color: #ffffff;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s;
+}
+
+#last-content a:hover {
+    border-color: #6B57FF;
+}
+

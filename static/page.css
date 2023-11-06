@@ -1,0 +1,25 @@
+/* Add your custom styles for the company name and header here */
+.company-name {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+
+.header {
+    background-color: #6B57FF;
+    padding: 10px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.header a:hover {
+    text-decoration: underline;
+}
