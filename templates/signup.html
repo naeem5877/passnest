@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup</title>
     <link rel="icon" type="image/x-icon" href="static/image/last.png">
     <!-- Include Bootstrap CSS -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-<link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}"></head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}">
+</head>
 <body>
 
 {% with messages = get_flashed_messages() %}
@@ -66,27 +68,36 @@
         </button>
 
         <!-- Facebook Login -->
-        <button class="btn btn-primary" onclick="signUpWithMicrosoft()">
+        <button class="btn btn-primary" onclick="signUpWithFacebook()">
             <span class="logo-container"><i class="fab fa-facebook-f"></i></span>
             <span>Login with Facebook</span>
         </button>
     </div>
     <p class="text-center mt-3">Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
 </div>
-  
 
-  <script>
-    // TODO: Replace with your web app's Firebase configuration
-    var firebaseConfig = {
-  apiKey: "AIzaSyAE82ayIjaEZMqqP1-Yl3pEC-QiGDmgeQU",
-  authDomain: "lyrical-respect-389317.firebaseapp.com",
-  databaseURL: "https://lyrical-respect-389317-default-rtdb.firebaseio.com",
-  projectId: "lyrical-respect-389317",
-  storageBucket: "lyrical-respect-389317.appspot.com",
-  messagingSenderId: "1076479956250",
-  appId: "1:1076479956250:web:fa6657a7c6683c66cb08a3",
-  measurementId: "G-NJW04L6DZ7"
-    };
+  <!-- Firebase scripts go here -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+
+
+  <!-- Include Bootstrap and jQuery scripts -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+      // TODO: Replace with your web app's Firebase configuration
+      var firebaseConfig = {
+    apiKey: "AIzaSyAE82ayIjaEZMqqP1-Yl3pEC-QiGDmgeQU",
+    authDomain: "lyrical-respect-389317.firebaseapp.com",
+    databaseURL: "https://lyrical-respect-389317-default-rtdb.firebaseio.com",
+    projectId: "lyrical-respect-389317",
+    storageBucket: "lyrical-respect-389317.appspot.com",
+    messagingSenderId: "1076479956250",
+    appId: "1:1076479956250:web:fa6657a7c6683c66cb08a3",
+    measurementId: "G-NJW04L6DZ7"
+      };
 
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
